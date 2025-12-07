@@ -114,3 +114,179 @@ Instead of pushing to GitHub to test if it works, you can simulate the Cloudflar
     ```
 
 If it works here, it is guaranteed to work when you deploy it.
+
+---
+
+## Issues Encountered & Solutions Applied (December 7, 2025)
+
+This section documents the specific issues encountered while deploying this Next.js 16 project to Cloudflare Pages and how each was resolved.
+
+---
+
+### Issue 1: `@vercel/analytics` Package Breaking Build
+
+**Error:** `ELSPROBLEMS` - Invalid dependency tree, `@vercel/analytics` flagged as invalid.
+
+**Cause:** The `@vercel/analytics` package is designed exclusively for Vercel's infrastructure and cannot run on Cloudflare.
+
+**Solution:**
+1. Removed `"@vercel/analytics": "latest"` from `package.json`
+2. Removed `import { Analytics } from "@vercel/analytics/next"` from `app/layout.tsx`
+3. Removed `<Analytics />` component from the layout's JSX
+
+**Files Modified:**
+- `package.json`
+- `app/layout.tsx`
+
+---
+
+### Issue 2: Package Manager Conflict (pnpm vs npm)
+
+**Error:** `SHELLAC COMMAND FAILED` - npm failing to read pnpm dependency tree.
+
+**Cause:** The project uses `pnpm` (has `pnpm-lock.yaml`), but the default build command `npx @cloudflare/next-on-pages@1` uses npm internally to validate dependencies.
+
+**Solution:**
+1. Changed Cloudflare Build Command from:
+   ```
+   npx @cloudflare/next-on-pages@1
+   ```
+   To:
+   ```
+   pnpm dlx @cloudflare/next-on-pages@1
+   ```
+2. Added `@cloudflare/next-on-pages` to `devDependencies` in `package.json`
+
+**Cloudflare Dashboard Location:** Settings > Builds & deployments > Build configuration
+
+---
+
+### Issue 3: Dynamic Routes Missing Edge Runtime
+
+**Error:** `Failed to produce a Cloudflare Pages build` - Dynamic routes not configured for Edge.
+
+**Cause:** Pages that use server-side features (like Supabase auth with `createClient()`) need to explicitly opt-in to Edge Runtime for Cloudflare.
+
+**Solution:**
+Added `export const runtime = 'edge';` at the top of these files:
+- `app/admin/dashboard/page.tsx`
+- `app/auth/error/page.tsx`
+- `app/dashboard/page.tsx`
+
+**Example:**
+```typescript
+export const runtime = 'edge';
+
+import { redirect } from "next/navigation"
+// ... rest of the file
+```
+
+**Important Notes:**
+- **DO add** `export const runtime = 'edge'` to pages that fetch data server-side
+- **DO NOT add** to client components (`"use client"`) - they don't need it
+- **DO NOT add** to purely static pages - let them be statically generated
+
+---
+
+### Issue 4: Conflicting `middleware.ts` and `proxy.ts` Files
+
+**Error:** `Conflicting files detected` - Next.js found two files trying to handle request interception.
+
+**Cause:** The project had both `middleware.ts` and `proxy.ts` at the root level. Only one can exist.
+
+**Solution:**
+1. Deleted `proxy.ts` (it was a leftover from a template)
+2. Created proper `middleware.ts` with Supabase session handling
+
+**Command used:**
+```bash
+git rm proxy.ts
+```
+
+---
+
+### Issue 5: Middleware Explicitly Setting Edge Runtime (Next.js 16)
+
+**Error:** `Error: Page /middleware provided runtime 'edge'`
+
+**Cause:** In Next.js 16, middleware **always** runs on Edge by default. Explicitly adding `export const runtime = 'edge'` causes a validation error.
+
+**Solution:**
+Removed `export const runtime = 'edge';` from `middleware.ts`
+
+**Key Insight:**
+| File Type | Default Runtime | Action Required |
+|-----------|-----------------|-----------------|
+| `page.tsx` | Node.js | ADD `export const runtime = 'edge'` for dynamic pages |
+| `route.ts` | Node.js | ADD `export const runtime = 'edge'` for API routes |
+| `middleware.ts` | Edge | DO NOT add runtime export |
+
+---
+
+### Issue 6: 500 Internal Server Error After Deployment
+
+**Error:** Homepage returning 500 error after successful build.
+
+**Cause:** The middleware was trying to connect to Supabase using environment variables that weren't set in Cloudflare.
+
+**Solution:**
+1. Updated `middleware.ts` to gracefully handle missing environment variables:
+   ```typescript
+   // If Supabase env vars are not set, pass through without auth
+   if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+       return NextResponse.next()
+   }
+   ```
+2. Wrapped Supabase logic in try-catch to prevent crashes
+3. **Required:** Add environment variables in Cloudflare Dashboard
+
+**Environment Variables Required:**
+| Variable | Description |
+|----------|-------------|
+| `NEXT_PUBLIC_SUPABASE_URL` | Your Supabase project URL |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Your Supabase anon/public key |
+
+**Cloudflare Dashboard Location:** Settings > Environment variables (add to both Production and Preview)
+
+---
+
+## Final Working Configuration
+
+### Cloudflare Dashboard Settings
+
+| Setting | Value |
+|---------|-------|
+| **Build command** | `pnpm dlx @cloudflare/next-on-pages@1` |
+| **Build output directory** | `.vercel/output/static` |
+| **Node version** | `20` (via `NODE_VERSION` env var) |
+| **Compatibility flags** | `nodejs_compat` (Settings > Functions) |
+
+### Files Modified Summary
+
+| File | Change |
+|------|--------|
+| `package.json` | Removed `@vercel/analytics`, added `@cloudflare/next-on-pages` |
+| `app/layout.tsx` | Removed `<Analytics />` import and component |
+| `app/admin/dashboard/page.tsx` | Added `export const runtime = 'edge'` |
+| `app/auth/error/page.tsx` | Added `export const runtime = 'edge'` |
+| `app/dashboard/page.tsx` | Added `export const runtime = 'edge'` |
+| `middleware.ts` | Created with error handling (no explicit edge runtime) |
+| `proxy.ts` | Deleted (was conflicting) |
+
+### Next.js 16 Compatibility Warning
+
+The `@cloudflare/next-on-pages` adapter officially supports Next.js up to version 15.5.2. This project uses Next.js 16.0.7. If you encounter issues, consider downgrading:
+
+```json
+"next": "15.5.2"
+```
+
+---
+
+## Lessons Learned
+
+1. **Always use pnpm consistently** - If `pnpm-lock.yaml` exists, use `pnpm dlx` in build commands
+2. **Middleware is always Edge** - Don't add runtime export to middleware.ts in Next.js 16
+3. **Environment variables are critical** - Add error handling for missing env vars in middleware
+4. **Test locally if possible** - Windows has issues with `@cloudflare/next-on-pages`, use WSL or push to test
+5. **Keep one request interceptor** - Only have `middleware.ts` OR `proxy.ts`, not both
