@@ -1,7 +1,7 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Archivo_Black, Space_Grotesk, IBM_Plex_Sans_Arabic } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
+
 import { I18nProvider } from "@/lib/i18n/context"
 import "./globals.css"
 
@@ -142,7 +142,7 @@ export const metadata: Metadata = {
     google: "your-google-verification-code",
   },
   category: "Shipping & Logistics",
-    generator: 'v0.app'
+  generator: 'v0.app'
 }
 
 export const viewport: Viewport = {
@@ -374,7 +374,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <I18nProvider>{children}</I18nProvider>
-        <Analytics />
+
       </body>
     </html>
   )
