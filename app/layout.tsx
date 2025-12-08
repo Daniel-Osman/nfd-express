@@ -29,11 +29,11 @@ const ibmPlexArabic = IBM_Plex_Sans_Arabic({
 export const metadata: Metadata = {
   metadataBase: new URL("https://nfdexpress.com"),
   title: {
-    default: "NFD Express | شحن من دبي الى لبنان - Shein & AliExpress Shipping Lebanon $6.5/kg",
+    default: "NFD Express | شحن من دبي الى لبنان - Shein & AliExpress Shipping Lebanon $7/kg",
     template: "%s | NFD Express - Dubai to Lebanon Shipping",
   },
   description:
-    "Ship Shein, AliExpress, Amazon & Temu orders from Dubai to Lebanon for $6.5/kg. Get your free UAE address, shop from any store worldwide, and receive packages in Beirut within 3-5 days. شحن شي ان الى لبنان - توصيل سريع وموثوق.",
+    "Ship Shein, AliExpress, Amazon & Temu orders from Dubai to Lebanon for $7/kg. Get your free UAE address, shop from any store worldwide, and receive packages in Beirut within 3-5 days. شحن شي ان الى لبنان - توصيل سريع وموثوق.",
   keywords: [
     // Primary English keywords
     "Dubai to Lebanon shipping",
@@ -84,7 +84,7 @@ export const metadata: Metadata = {
     // Price related
     "cheap shipping Lebanon",
     "affordable shipping Dubai Lebanon",
-    "$6.5 per kg shipping",
+    "$7 per kg shipping",
   ],
   authors: [{ name: "NFD Express", url: "https://nfdexpress.com" }],
   creator: "NFD Express",
@@ -107,7 +107,7 @@ export const metadata: Metadata = {
     alternateLocale: ["ar_LB"],
     url: "https://nfdexpress.com",
     siteName: "NFD Express",
-    title: "NFD Express | Ship Shein, AliExpress & Amazon to Lebanon - $6.5/kg",
+    title: "NFD Express | Ship Shein, AliExpress & Amazon to Lebanon - $7/kg",
     description:
       "Get your free Dubai address and ship from Shein, AliExpress, Amazon, Temu to Lebanon. Fast 3-5 day delivery to Beirut and all Lebanon. شحن من دبي الى لبنان.",
     images: [
@@ -121,7 +121,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "NFD Express | Ship from Dubai to Lebanon - $6.5/kg",
+    title: "NFD Express | Ship from Dubai to Lebanon - $7/kg",
     description:
       "Ship Shein, AliExpress, Amazon orders to Lebanon. Free Dubai address. 3-5 day delivery. No hidden fees.",
     images: ["/og-image.png"],
@@ -172,7 +172,7 @@ function JsonLd() {
           height: 512,
         },
         description:
-          "Professional shipping service from Dubai to Lebanon. Ship Shein, AliExpress, Amazon and Temu orders for $6.5/kg with 3-5 day delivery.",
+          "Professional shipping service from Dubai to Lebanon. Ship Shein, AliExpress, Amazon and Temu orders for $7/kg with 3-5 day delivery.",
         foundingDate: "2020",
         areaServed: [
           { "@type": "Country", name: "Lebanon" },
@@ -261,11 +261,11 @@ function JsonLd() {
                 name: "Standard Shipping",
                 description: "3-5 day delivery from Dubai to Lebanon",
               },
-              price: "6.50",
+              price: "7.00",
               priceCurrency: "USD",
               priceSpecification: {
                 "@type": "UnitPriceSpecification",
-                price: "6.50",
+                price: "7.00",
                 priceCurrency: "USD",
                 unitCode: "KGM",
                 unitText: "per kilogram",
@@ -283,7 +283,7 @@ function JsonLd() {
             name: "How do I ship Shein orders to Lebanon?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Sign up for NFD Express to get your free Dubai warehouse address. Use this address when ordering from Shein. We'll receive your packages and ship them to Lebanon for $6.5/kg within 3-5 days.",
+              text: "Sign up for NFD Express to get your free Dubai warehouse address. Use this address when ordering from Shein. We'll receive your packages and ship them to Lebanon for $7/kg within 3-5 days.",
             },
           },
           {
@@ -299,7 +299,7 @@ function JsonLd() {
             name: "What is the shipping cost from Dubai to Lebanon?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Our flat rate is $6.5 per kilogram with no hidden fees. This includes full insurance coverage and real-time tracking.",
+              text: "Our flat rate is $7 per kilogram with no hidden fees. This includes full insurance coverage and real-time tracking.",
             },
           },
           {
@@ -315,7 +315,7 @@ function JsonLd() {
             name: "كيف أشحن طلبات شي ان إلى لبنان؟",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "سجل في NFD Express للحصول على عنوان مستودع دبي المجاني. استخدم هذا العنوان عند الطلب من شي ان. سنستلم طرودك ونشحنها إلى لبنان بسعر 6.5 دولار للكيلو خلال 3-5 أيام.",
+              text: "سجل في NFD Express للحصول على عنوان مستودع دبي المجاني. استخدم هذا العنوان عند الطلب من شي ان. سنستلم طرودك ونشحنها إلى لبنان بسعر 7 دولار للكيلو خلال 3-5 أيام.",
             },
           },
         ],

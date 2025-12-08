@@ -122,7 +122,7 @@ export function Hero() {
             {t.hero.subheadline}{" "}
             <span className="relative inline-block">
               <span className="text-[var(--accent-main)] font-bold text-2xl sm:text-3xl" itemProp="price">
-                $6.5{t.hero.perKg}
+                $7{t.hero.perKg}
               </span>
               <motion.span
                 className="absolute -bottom-1 left-0 right-0 h-1 bg-[var(--accent-main)]/30"

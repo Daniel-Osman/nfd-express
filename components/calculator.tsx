@@ -8,7 +8,7 @@ import { useI18n } from "@/lib/i18n/context"
 export function Calculator() {
   const [weight, setWeight] = useState(2)
   const [isAnimating, setIsAnimating] = useState(false)
-  const pricePerKg = 6.5
+  const pricePerKg = 7
   const total = (weight * pricePerKg).toFixed(2)
   const { t, dir } = useI18n()
   const ArrowIcon = dir === "rtl" ? ArrowLeft : ArrowRight
@@ -164,11 +164,10 @@ export function Calculator() {
                       <button
                         key={w}
                         onClick={() => setWeight(w)}
-                        className={`flex-1 py-2 font-mono text-sm border transition-all ${
-                          weight === w
+                        className={`flex-1 py-2 font-mono text-sm border transition-all ${weight === w
                             ? "bg-[var(--text-primary)] text-[var(--bg-primary)] border-[var(--text-primary)]"
                             : "border-[var(--border-color)] hover:border-[var(--accent-main)] hover:text-[var(--accent-main)]"
-                        }`}
+                          }`}
                       >
                         {w}kg
                       </button>

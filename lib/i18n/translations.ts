@@ -16,7 +16,7 @@ export const translations = {
 
     // Ticker
     ticker: {
-      text: "NEXT FLIGHT: TUESDAY /// DUBAI TO BEIRUT /// $6.5 FLAT RATE /// SHEIN LEBANON /// ALIEXPRESS SHIPPING /// TRACK IN REAL-TIME /// NO HIDDEN FEES /// ",
+      text: "NEXT FLIGHT: TUESDAY /// DUBAI TO BEIRUT /// $7 FLAT RATE /// SHEIN LEBANON /// ALIEXPRESS SHIPPING /// TRACK IN REAL-TIME /// NO HIDDEN FEES /// ",
     },
 
     // Hero
@@ -154,7 +154,7 @@ export const translations = {
           name: "Rami H.",
           location: "Sidon",
           message:
-            "Finally found a reliable company for Temu orders! $6.5/kg is unbeatable. My packages always arrive safely to Sidon.",
+            "Finally found a reliable company for Temu orders! $7/kg is unbeatable. My packages always arrive safely to Sidon.",
           time: "1 week ago",
         },
       ],
@@ -171,7 +171,7 @@ export const translations = {
         {
           question: "How do I ship Shein orders to Lebanon?",
           answer:
-            "Sign up for NFD Express to get your free Dubai warehouse address. When shopping on Shein, use this address at checkout. Once your order arrives at our warehouse, we'll ship it to Lebanon for $6.5/kg within 3-5 days.",
+            "Sign up for NFD Express to get your free Dubai warehouse address. When shopping on Shein, use this address at checkout. Once your order arrives at our warehouse, we'll ship it to Lebanon for $7/kg within 3-5 days.",
         },
         {
           question: "Can I ship AliExpress orders to Lebanon?",
@@ -181,7 +181,7 @@ export const translations = {
         {
           question: "What is the shipping cost from Dubai to Lebanon?",
           answer:
-            "Our flat rate is $6.5 per kilogram with no hidden fees. This includes full insurance coverage, real-time tracking, and delivery to any location in Lebanon including Beirut, Tripoli, Sidon, and all other cities.",
+            "Our flat rate is $7 per kilogram with no hidden fees. This includes full insurance coverage, real-time tracking, and delivery to any location in Lebanon including Beirut, Tripoli, Sidon, and all other cities.",
         },
         {
           question: "How long does shipping from Dubai to Lebanon take?",
@@ -227,7 +227,7 @@ export const translations = {
     // Footer
     footer: {
       description:
-        "Your trusted partner for shipping from Dubai to Lebanon. Ship Shein, AliExpress, Amazon, Temu & more for $6.5/kg. Fast, reliable, transparent.",
+        "Your trusted partner for shipping from Dubai to Lebanon. Ship Shein, AliExpress, Amazon, Temu & more for $7/kg. Fast, reliable, transparent.",
       deliveryAreas: "Delivery Areas:",
       areas: "Beirut, Tripoli, Sidon, Jounieh, Zahle, Batroun, Byblos, Tyre & all Lebanon",
       weShipFrom: "WE SHIP FROM",
@@ -253,7 +253,7 @@ export const translations = {
 
     // Ticker
     ticker: {
-      text: "الرحلة الجاية: يوم التلات /// دبي ع بيروت /// $6.5 سعر ثابت /// شي ان لبنان /// شحن علي اكسبرس /// تتبّع لحظة بلحظة /// ما في رسوم مخفية /// ",
+      text: "الرحلة الجاية: يوم التلات /// دبي ع بيروت /// $7 سعر ثابت /// شي ان لبنان /// شحن علي اكسبرس /// تتبّع لحظة بلحظة /// ما في رسوم مخفية /// ",
     },
 
     // Hero
@@ -388,7 +388,7 @@ export const translations = {
         {
           name: "رامي ح.",
           location: "صيدا",
-          message: "أخيراً لقيت شركة موثوقة لطلبات تيمو! $6.5 للكيلو سعر ما إلو منافس. طرودي دايماً بتوصل بأمان لصيدا.",
+          message: "أخيراً لقيت شركة موثوقة لطلبات تيمو! $7 للكيلو سعر ما إلو منافس. طرودي دايماً بتوصل بأمان لصيدا.",
           time: "من أسبوع",
         },
       ],
@@ -405,7 +405,7 @@ export const translations = {
         {
           question: "كيف بشحن طلبات شي ان عالبنان؟",
           answer:
-            "سجّل بـ NFD Express وخود عنوان مستودعك بدبي ببلاش. لمّا تتسوق من شي ان، حط هالعنوان وقت الدفع. بس يوصل طلبك عمستودعنا، منشحنلك ياه عالبنان بـ $6.5/كلغ خلال 3-5 أيام.",
+            "سجّل بـ NFD Express وخود عنوان مستودعك بدبي ببلاش. لمّا تتسوق من شي ان، حط هالعنوان وقت الدفع. بس يوصل طلبك عمستودعنا، منشحنلك ياه عالبنان بـ $7/كلغ خلال 3-5 أيام.",
         },
         {
           question: "فيني شحن طلبات علي اكسبرس عالبنان؟",
@@ -415,7 +415,7 @@ export const translations = {
         {
           question: "قدّيش كلفة الشحن من دبي عالبنان؟",
           answer:
-            "سعرنا الثابت $6.5 للكيلو من دون رسوم مخفية. هالسعر بيشمل تأمين كامل، تتبّع لحظة بلحظة، وتوصيل لأي منطقة بلبنان يعني بيروت، طرابلس، صيدا، وكل المناطق التانية.",
+            "سعرنا الثابت $7 للكيلو من دون رسوم مخفية. هالسعر بيشمل تأمين كامل، تتبّع لحظة بلحظة، وتوصيل لأي منطقة بلبنان يعني بيروت، طرابلس، صيدا، وكل المناطق التانية.",
         },
         {
           question: "قدّيش بياخد وقت الشحن من دبي عالبنان؟",
@@ -460,7 +460,7 @@ export const translations = {
     // Footer
     footer: {
       description:
-        "شريكك الموثوق للشحن من دبي عالبنان. اشحن من شي ان، علي اكسبرس، أمازون، تيمو وغيرن بـ $6.5/كلغ. سريع، موثوق، شفاف.",
+        "شريكك الموثوق للشحن من دبي عالبنان. اشحن من شي ان، علي اكسبرس، أمازون، تيمو وغيرن بـ $7/كلغ. سريع، موثوق، شفاف.",
       deliveryAreas: "مناطق التوصيل:",
       areas: "بيروت، طرابلس، صيدا، جونية، زحلة، البترون، جبيل، صور وكل لبنان",
       weShipFrom: "منشحن من",

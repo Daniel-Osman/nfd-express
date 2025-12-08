@@ -170,7 +170,7 @@ export function CtaSection() {
                 {/* Price highlight */}
                 <div className="bg-white/10 backdrop-blur-sm p-6 text-center w-full max-w-xs">
                   <p className="font-mono text-sm opacity-70 mb-2">Starting from just</p>
-                  <p className="font-heading text-5xl md:text-6xl text-[var(--accent-main)]">$6.5</p>
+                  <p className="font-heading text-5xl md:text-6xl text-[var(--accent-main)]">$7</p>
                   <p className="font-mono text-sm opacity-70">per kilogram</p>
                 </div>
 
