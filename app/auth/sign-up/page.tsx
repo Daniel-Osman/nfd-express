@@ -18,6 +18,9 @@ export default function SignUpPage() {
   const [repeatPassword, setRepeatPassword] = useState("")
   const [fullName, setFullName] = useState("")
   const [phoneNumber, setPhoneNumber] = useState("")
+  const [addressLine1, setAddressLine1] = useState("")
+  const [addressLine2, setAddressLine2] = useState("")
+  const [city, setCity] = useState("")
   const [error, setError] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
@@ -43,6 +46,9 @@ export default function SignUpPage() {
           data: {
             full_name: fullName,
             phone_number: phoneNumber,
+            address_line1: addressLine1,
+            address_line2: addressLine2,
+            city: city,
           },
         },
       })
@@ -73,7 +79,7 @@ export default function SignUpPage() {
                 <div className="flex flex-col gap-4">
                   <div className="grid gap-2">
                     <Label htmlFor="fullName" className="text-[var(--text-primary)]">
-                      الاسم الكامل
+                      الاسم الكامل *
                     </Label>
                     <Input
                       id="fullName"
@@ -87,20 +93,62 @@ export default function SignUpPage() {
                   </div>
                   <div className="grid gap-2">
                     <Label htmlFor="phone" className="text-[var(--text-primary)]">
-                      رقم الهاتف
+                      رقم الهاتف *
                     </Label>
                     <Input
                       id="phone"
                       type="tel"
                       placeholder="+961 XX XXX XXX"
+                      required
                       value={phoneNumber}
                       onChange={(e) => setPhoneNumber(e.target.value)}
                       className="bg-[var(--bg-primary)] border-[var(--border-color)] text-[var(--text-primary)]"
                     />
                   </div>
                   <div className="grid gap-2">
+                    <Label htmlFor="addressLine1" className="text-[var(--text-primary)]">
+                      العنوان - السطر الأول *
+                    </Label>
+                    <Input
+                      id="addressLine1"
+                      type="text"
+                      placeholder="اسم الشارع والمبنى"
+                      required
+                      value={addressLine1}
+                      onChange={(e) => setAddressLine1(e.target.value)}
+                      className="bg-[var(--bg-primary)] border-[var(--border-color)] text-[var(--text-primary)]"
+                    />
+                  </div>
+                  <div className="grid gap-2">
+                    <Label htmlFor="addressLine2" className="text-[var(--text-primary)]">
+                      العنوان - السطر الثاني
+                    </Label>
+                    <Input
+                      id="addressLine2"
+                      type="text"
+                      placeholder="الطابق، الشقة (اختياري)"
+                      value={addressLine2}
+                      onChange={(e) => setAddressLine2(e.target.value)}
+                      className="bg-[var(--bg-primary)] border-[var(--border-color)] text-[var(--text-primary)]"
+                    />
+                  </div>
+                  <div className="grid gap-2">
+                    <Label htmlFor="city" className="text-[var(--text-primary)]">
+                      المدينة *
+                    </Label>
+                    <Input
+                      id="city"
+                      type="text"
+                      placeholder="بيروت"
+                      required
+                      value={city}
+                      onChange={(e) => setCity(e.target.value)}
+                      className="bg-[var(--bg-primary)] border-[var(--border-color)] text-[var(--text-primary)]"
+                    />
+                  </div>
+                  <div className="grid gap-2">
                     <Label htmlFor="email" className="text-[var(--text-primary)]">
-                      البريد الإلكتروني
+                      البريد الإلكتروني *
                     </Label>
                     <Input
                       id="email"
@@ -114,7 +162,7 @@ export default function SignUpPage() {
                   </div>
                   <div className="grid gap-2">
                     <Label htmlFor="password" className="text-[var(--text-primary)]">
-                      كلمة المرور
+                      كلمة المرور *
                     </Label>
                     <Input
                       id="password"
@@ -127,7 +175,7 @@ export default function SignUpPage() {
                   </div>
                   <div className="grid gap-2">
                     <Label htmlFor="repeat-password" className="text-[var(--text-primary)]">
-                      تأكيد كلمة المرور
+                      تأكيد كلمة المرور *
                     </Label>
                     <Input
                       id="repeat-password"
